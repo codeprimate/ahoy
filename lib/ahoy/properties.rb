@@ -5,7 +5,7 @@ module Ahoy
     module ClassMethods
       def where_properties(properties)
         relation = self
-        column_type = columns_hash["properties"].type
+        column_type = columns_hash["properties"].type || columns_hash["properties"].sql_type.to_sym
         adapter_name = connection.adapter_name.downcase
         case adapter_name
         when /mysql/
